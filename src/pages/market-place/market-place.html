@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Lojas para Comprar Comidas</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list >
+    <div *ngFor="let loja of lojaList" margin-top (click)="openLoja(loja)">
+      <h3>
+        {{loja.lojaNome}}
+      </h3>
+      <div *ngFor="let tipo of loja.tipoComida">
+        {{tipo}}
+      </div>
+    </div>
+  </ion-list>
+</ion-content>

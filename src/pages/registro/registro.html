@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Registre-se</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <div>
+    <h1 class="titulo">REGISTRE-SE</h1>
+  </div>
+  <form [formGroup]="userForm">
+    <ion-item>
+      <ion-label floating>E-mail</ion-label>
+      <ion-input [ngClass]="getClassInvalid('email')" formControlName="email" type="email"></ion-input>
+    </ion-item>
+
+    <ul class="inputError">
+      <li *ngIf="isInvalid('email')">Este é um campo obrigatório</li>
+      <li *ngIf="isEmailInvalid('email')">Este não é um e-mail válido</li>
+    </ul>
+
+    <ion-item>
+      <ion-label floating>Senha</ion-label>
+      <ion-input #senha formControlName="senha" type="password"></ion-input>
+    </ion-item>
+    <ul class="inputError">
+      <li *ngIf="isInvalid('senha')">Este é um campo obrigatório</li>
+    </ul>
+
+    <ion-item>
+      <ion-label floating>Data de Nascimento</ion-label>
+      <ion-datetime [ngClass]="getClassInvalid('nascimento')" formControlName="nascimento"></ion-datetime>
+    </ion-item>
+    <ul class="inputError">
+      <li *ngIf="isInvalid('nascimento')">Este é um campo obrigatório</li>
+    </ul>
+  
+    <ion-item>
+      <ion-label floating>Gênero</ion-label>
+      <ion-select [ngClass]="getClassInvalid('genero')" formControlName="genero" title="Selecione o seu gênero">
+        <ion-option>Masculino</ion-option>
+        <ion-option>Feminino</ion-option>
+        <ion-option>It</ion-option>
+      </ion-select>
+    </ion-item>
+    <ul class="inputError">
+      <li *ngIf="isInvalid('genero')">Este é um campo obrigatório</li>
+    </ul>
+  </form>
+  <button class="registerButton" ion-button block (click)="onSubmitForm()" [disabled]="userForm.invalid">Registrar</button>
+  <div class="alertRegister" *ngIf="userForm.invalid && userForm.dirty">Um ou mais campos obrigatórios não foram preenchidos.</div><br>
+  <button ion-button block (click)="alreadyUser()" >Já possuo uma conta</button>
+</ion-content>

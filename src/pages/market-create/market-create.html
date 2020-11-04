@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Crie sua loja!</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding> 
+    <form [formGroup]="lojaForm">
+
+      <ion-item>
+        <ion-label floating>Banner da Loja</ion-label>
+        <ion-input formControlName="bannerLoja"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Nome da Loja</ion-label>
+        <ion-input formControlName="lojaNome"></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label>Horario de Inicio</ion-label>
+        <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" formControlName="horarioInicio">Horário de Inicio</ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Horario de Fim</ion-label>
+        <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" formControlName="horarioFinal">Horário de Fim</ion-datetime>
+      </ion-item>
+
+      <ion-list>
+        <ion-item>
+          <ion-label>O que você serve?</ion-label>
+          <ion-select formControlName="tipoComida" multiple="true">
+            <ion-option value="hamburguer">Humburguer</ion-option>
+            <ion-option value="pizza">Pizza</ion-option>
+            <ion-option value="porcoes">Porções</ion-option>
+            <ion-option value="xisSalada">Xis Salada</ion-option>
+            <ion-option value="almoco">Almoço/Janta</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+        <button ion-button block (click)="criarLoja()" [disabled]="lojaForm.invalid">Criar Loja</button>
+    </form>
+  <button ion-button block (click)="irLojas()">Ir para as Lojas</button>
+  
+
+</ion-content>
